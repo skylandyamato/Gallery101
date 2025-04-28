@@ -1,0 +1,75 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            border: 2px solid #ccc;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .gallery img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border: 2px solid gray;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        .gallery img:hover {
+            border-color: black;
+        }
+        .selected {
+            margin-top: 20px;
+            border: 2px solid #ccc;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .selected img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+        .description {
+            margin-top: 10px;
+            display: none;
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+    <script>
+        function selectImage(src, text) {
+            document.getElementById('selectedImage').src = src;
+            document.getElementById('imageDescription').textContent = text;
+            document.getElementById('imageDescription').style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+    <div class="gallery">
+	<img src="hap.jpg" onclick="selectImage(this.src, 'Happy')">
+    <img src="long.jpg" onclick="selectImage(this.src, 'Very Long')">
+	<img src="Mind.jpg" onclick="selectImage(this.src, 'Sad')">
+	<img src="onepunch.jpg" onclick="selectImage(this.src, 'ONE PUNCHHHHHHHHHHHH')">
+	<img src="you.jpg" onclick="selectImage(this.src, 'ITS YOUUUUUU')">
+	<img src="fetchimage.jpg" onclick="selectImage(this.src, 'Fetch')">
+	<img src="obama.jpg" onclick="selectImage(this.src, 'Barack Obama')">
+	<img src="BlackmenKiss.jpg" onclick="selectImage(this.src, 'Two Black Men Kissing')">
+	<img src="joe.jpg" onclick="selectImage(this.src, 'Joe Biden')">
+	<img src="Donald.jpg" onclick="selectImage(this.src, 'Donald Trump')">
+	<img src="rizal.jpg" onclick="selectImage(this.src, ' Dr Jose Rizal')">
+	<img src="hitler.jpg" onclick="selectImage(this.src, 'Adolf hitler')">
+    </div>
+    <div class="selected">
+        <img id="selectedImage" src="" alt="Selected Image">
+        <p id="imageDescription" class="description"></p>
+    </div>
+</body>
+</html>
+

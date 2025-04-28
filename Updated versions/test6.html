@@ -1,0 +1,156 @@
+<?php
+$images = [
+    ['src' => 'hap.jpg', 'description' => 'Happy'],
+    ['src' => 'long.jpg', 'description' => 'Very Long'],
+    ['src' => 'Mind.jpg', 'description' => 'Sad'],
+    ['src' => 'onepunch.jpg', 'description' => 'ONE PUNCHHHHHHHHHHHH'],
+    ['src' => 'you.jpg', 'description' => 'ITS YOUUUUUU'],
+    ['src' => 'fetchimage.jpg', 'description' => 'Fetch'],
+    ['src' => 'obama.jpg', 'description' => 'Barack Obama'],
+    ['src' => 'BlackmenKiss.jpg', 'description' => 'Two Black Men Kissing'],
+    ['src' => 'joe.jpg', 'description' => 'Joe Biden'],
+    ['src' => 'Donald.jpg', 'description' => 'Donald Trump'],
+    ['src' => 'rizal.jpg', 'description' => 'Dr Jose Rizal'],
+    ['src' => 'hitler.jpg', 'description' => 'Adolf hitler']
+];
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Responsive grid */
+            gap: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .gallery-item {
+            position: relative; /* Needed for description overlay */
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05); /* Zoom effect on hover */
+        }
+
+        .gallery-item img {
+            display: block;
+            width: 100%;
+            height: 100px; /* Fixed height for uniformity */
+            object-fit: cover;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .gallery-item:hover img {
+            opacity: 0.8; /* Slightly dim image on hover */
+        }
+
+         .image-description-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent dark background */
+            color: #fff;
+            padding: 5px;
+            font-size: 12px;
+            text-align: center;
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .gallery-item:hover .image-description-overlay {
+            opacity: 1; /* Show on hover */
+        }
+
+
+        .selected-image-container {
+            margin-top: 30px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .selected-image-container h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .selected-image-container img {
+            max-width: 100%; /* Make image responsive */
+            max-height: 400px; /* Limit height */
+            height: auto;
+            object-fit: contain;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .selected-description {
+            font-size: 18px;
+            color: #555;
+            min-height: 1.2em; /* Reserve space for description */
+        }
+    </style>
+    <script>
+        function selectImage(src, text) {
+            document.getElementById('selectedImage').src = src;
+            document.getElementById('selectedDescription').textContent = text;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Image Gallery</h1>
+        <div class="gallery">
+            <?php foreach ($images as $image): ?>
+                <div class="gallery-item" onclick="selectImage('<?php echo $image['src']; ?>', '<?php echo $image['description']; ?>')">
+                    <img src="<?php echo $image['src']; ?>" alt="<?php echo $image['description']; ?>">
+                     <div class="image-description-overlay"><?php echo $image['description']; ?></div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <div class="selected-image-container">
+             <h2>Selected Image</h2>
+            <img id="selectedImage" src="" alt="Selected Image">
+            <p id="selectedDescription" class="selected-description"></p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            border: 3px solid #ccc;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .gallery img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border: 2px solid gray;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        .gallery img:hover {
+            border-color: black;
+        }
+        .selected {
+            margin-top: 20px;
+            border: 2px solid #ccc;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .selected img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+        }
+		 p {
+            display: none;
+        }
+    </style>
+    <script>
+        function selectImage(src) {
+            document.getElementById('selectedImage').src = src;
+			var toggle = document.getElementById("click");
+        toggle.addEventListener("click", show);
+        }
+		function show() {
+            var p = document.getElementsByTagName("p")[0].style.display = "block";
+        }
+		
+    </script>
+</head>
+<body>
+	<h1><center>Gallery</center></h1>
+    <div class="gallery">
+    <img src="hap.jpg" 
+    <img src="long.jpg" 
+	<img src="Mind.jpg" 
+	<img src="onepunch.jpg" 
+	<img src="you.jpg" 
+	<img src="fetchimage.jpg" 
+	<img src="obama.jpg" 
+	<img src="BlackmenKiss.jpg" 
+	<img src="joe.jpg"
+	<img src="Donald.jpg" 
+	<img src="rizal.jpg" 
+	<img src="hitler.jpg" 
+    </div>
+	
+<center><h2>Picture</h2></center>
+    <center><div class="selected">
+        <img id="selectedImage" src="" alt="Selected Image" id=click><p>test</p>
+    </div></center>
+</body>
+</html>
